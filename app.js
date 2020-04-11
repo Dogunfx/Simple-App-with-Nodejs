@@ -4,16 +4,18 @@
 // the program will out 2,  5 , 6
 
 function sortNum(a, b, c) {
-    let arr = [a, b, c]
-    var len = arr.length;
-    for (var i = len - 1; i >= 0; i--) {
-        for (var j = 1; j <= i; j++) {
-            if (arr[j - 1] > arr[j]) {
-                var temp = arr[j - 1];
-                arr[j - 1] = arr[j];
-                arr[j] = temp;
+    let arr = [a, b, c];
+    var minIdx, temp, len = arr.length;
+    for (var i = 0; i < len; i++) {
+        minIdx = i;
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
             }
         }
+        temp = arr[i];
+        arr[i] = arr[minIdx];
+        arr[minIdx] = temp;
     }
     console.log(arr);
 }
